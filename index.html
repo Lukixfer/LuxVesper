@@ -3,7 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta Tags Básicas de SEO -->
     <title>Lux Vesper - Desenvolvimento Web Premium</title>
+    <meta
+      name="description"
+      content="Desenvolvemos experiências web premium, rápidas e orientadas à conversão. Eleve o padrão do seu negócio com tecnologia de última geração e design exclusivo."
+    />
+
+    <!-- OpenGraph (WhatsApp, Facebook, LinkedIn) -->
+    <meta
+      property="og:title"
+      content="Lux Vesper - Desenvolvimento Web Premium"
+    />
+    <meta
+      property="og:description"
+      content="Desenvolvemos experiências web premium, rápidas e orientadas à conversão."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://luxvesper.com" />
+    <meta property="og:image" content="https://luxvesper.com/og-image.jpg" />
+    <meta property="og:site_name" content="Lux Vesper" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Lux Vesper - Design e Alta Performance"
+    />
+    <meta
+      name="twitter:description"
+      content="O Futuro é Digital. Deixamos sua marca brilhar no mundo web."
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
       rel="stylesheet"
@@ -34,6 +66,87 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        scroll-behavior: smooth;
+        padding-top: 80px; /* Space for fixed navbar */
+      }
+
+      /* Navbar Fixa */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4rem;
+        background: rgba(9, 9, 14, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-brand {
+        font-weight: 800;
+        font-size: 1.4rem;
+        letter-spacing: -0.5px;
+        color: var(--text-light);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-brand::before {
+        content: "✦";
+        color: var(--color-gold);
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--color-gold);
+      }
+
+      .nav-cta {
+        padding: 0.6rem 1.5rem;
+        border-radius: 30px;
+        background: var(--text-light);
+        color: var(--bg-dark);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+      }
+
+      .nav-cta:hover {
+        background: var(--color-green);
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .navbar {
+          padding: 0 1.5rem;
+        }
       }
 
       /* Banner Container */
@@ -224,6 +337,18 @@
         100% {
           transform: translateY(30px) scale(1.1);
         }
+      }
+
+      /* Scroll Reveal Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* Features List */
@@ -500,30 +625,101 @@
       /* Footer */
       footer {
         width: 100%;
-        text-align: center;
-        padding: 2rem;
+        background: rgba(255, 255, 255, 0.02);
         border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 4rem 2rem 2rem;
+        margin-top: 2rem;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-col h4 {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-col p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-col ul li a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 0.95rem;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--color-gold);
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
         color: var(--text-muted);
         font-size: 0.9rem;
       }
 
-      footer p {
-        margin-bottom: 0.5rem;
-      }
-
-      footer a {
-        color: var(--color-gold);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      footer a:hover {
-        color: var(--text-light);
+      @media (max-width: 768px) {
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
       }
     </style>
   </head>
   <body>
-    <section class="lux-banner">
+    <!-- Navbar -->
+    <header class="navbar">
+      <a href="#" class="nav-brand">Lux Vesper</a>
+
+      <ul class="nav-links">
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="#contato" class="nav-cta">Começar Projeto</a>
+    </header>
+
+    <!-- Header fixo precisa de um reset simples que tira o underline -->
+    <style>
+      .nav-links a {
+        text-decoration: none;
+      }
+      .nav-cta {
+        text-decoration: none;
+      }
+    </style>
+
+    <section class="lux-banner reveal">
       <!-- Orbs Backgrounds -->
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
@@ -545,7 +741,7 @@
         </p>
 
         <div class="actions">
-          <a href="#proposta" class="btn btn-primary">Solicitar Proposta</a>
+          <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
           <a href="#portfolio" class="btn btn-outline">Ver Nosso Portfólio</a>
         </div>
 
@@ -564,7 +760,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio">
+    <section id="portfolio" class="reveal">
       <h2 class="section-title">
         Obras de
         <span class="highlight" style="animation-delay: -2s">Arte Digital</span>
@@ -611,7 +807,7 @@
     </section>
 
     <!-- Services Section -->
-    <section>
+    <section id="especialidades" class="reveal">
       <h2 class="section-title">
         Nossas
         <span class="highlight" style="animation-delay: -4s"
@@ -668,7 +864,7 @@
     </section>
 
     <!-- Pricing / Investment Section -->
-    <section id="planos">
+    <section id="planos" class="reveal">
       <h2 class="section-title">
         Investimento
         <span class="highlight" style="animation-delay: -2s">Transparente</span>
@@ -860,7 +1056,7 @@
     </section>
 
     <!-- Process Section -->
-    <section>
+    <section id="processo" class="reveal">
       <h2 class="section-title">
         Nosso
         <span class="highlight" style="animation-delay: -1s">Processo</span>
@@ -925,7 +1121,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section>
+    <section class="reveal">
       <h2 class="section-title">
         Experiência
         <span class="highlight" style="animation-delay: -3s">Comprovada</span>
@@ -954,7 +1150,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section>
+    <section id="faq" class="reveal">
       <h2 class="section-title">
         Perguntas
         <span class="highlight" style="animation-delay: -5s">Frequentes</span>
@@ -1002,7 +1198,11 @@
     </section>
 
     <!-- WhatsApp CTA -->
-    <section id="proposta" style="padding-top: 0; padding-bottom: 0">
+    <section
+      id="contato"
+      class="reveal"
+      style="padding-top: 0; padding-bottom: 0"
+    >
       <div class="cta-section">
         <h2>Pronto para iniciar projeto na Lux Vesper?</h2>
         <p>Desenvolva seu próximo sucesso diretamente conosco agora mesmo.</p>
@@ -1028,11 +1228,91 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-      <p>&copy; 2026 Lux Vesper. Todos os direitos reservados.</p>
-      <p>
-        Desenvolvido no Brasil. <a href="#proposta">Converse pelo WhatsApp</a>.
-      </p>
+    <footer class="reveal">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4 style="display: flex; align-items: center; gap: 8px">
+            <span style="color: var(--color-gold)">✦</span> Lux Vesper
+          </h4>
+          <p>
+            Desenvolvimento Web Premium e Design Exclusivo para empresas que
+            buscam o mais alto patamar de conversão.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#portfolio">Portfólio de Obras</a></li>
+            <li><a href="#especialidades">Nossas Especialidades</a></li>
+            <li><a href="#planos">Investimento e Planos</a></li>
+            <li><a href="#processo">Metodologia</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato Direto</h4>
+          <ul>
+            <li>
+              <a
+                href="https://wa.me/5531984069315"
+                target="_blank"
+                rel="noopener noreferrer"
+                >WhatsApp: (31) 98406-9315</a
+              >
+            </li>
+            <li>
+              <a href="mailto:contato@luxvesper.com">contato@luxvesper.com</a>
+            </li>
+            <li><a href="#contato">Solicitar Orçamento Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Garantia de Qualidade</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Lux Vesper WebDev. Todos os direitos reservados.</div>
+        <div>
+          CNPJ: 00.000.000/0001-00
+          <span style="margin: 0 10px; opacity: 0.3">|</span> Belo Horizonte, MG
+          - Brasil
+        </div>
+      </div>
     </footer>
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.15,
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              // Opcional: Se quiser que a animação rode apenas uma vez, descomente a linha abaixo
+              // observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll(".reveal").forEach((el) => {
+          revealObserver.observe(el);
+        });
+
+        // Garantir que a primeira section no topo sempre apareça
+        setTimeout(() => {
+          const banner = document.querySelector(".lux-banner");
+          if (banner) banner.classList.add("revealed");
+        }, 100);
+      });
+    </script>
   </body>
 </html>
