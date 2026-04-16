@@ -389,6 +389,114 @@
         background: #0fa472;
       }
 
+      /* Listas de Serviços */
+      .service-features {
+        list-style: none;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .service-features li {
+        margin-bottom: 0.8rem;
+        display: flex;
+        font-size: 0.95rem;
+        color: var(--text-light);
+        align-items: center;
+        gap: 10px;
+      }
+
+      .service-features li::before {
+        content: "✓";
+        color: var(--color-green);
+        font-weight: bold;
+      }
+
+      /* FAQ Accordion */
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      details.faq-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: background 0.3s;
+      }
+
+      details.faq-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      details.faq-item summary {
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        color: var(--text-light);
+      }
+
+      details.faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details.faq-item summary::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: var(--color-gold);
+      }
+
+      details.faq-item[open] summary::after {
+        content: "-";
+      }
+
+      .faq-answer {
+        margin-top: 1rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      /* User Reviews / Social Proof */
+      .review-card {
+        border-left: 4px solid var(--color-gold);
+        padding-left: 1.5rem;
+      }
+
+      .review-card .client-name {
+        font-weight: 800;
+        color: var(--text-light);
+        margin-top: 1rem;
+        font-size: 1rem;
+      }
+
+      .review-card .client-role {
+        font-size: 0.85rem;
+        color: var(--color-gold);
+      }
+
+      /* Process Steps */
+      .step-num {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.05);
+        line-height: 1;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+      }
+
+      .card:hover .step-num {
+        color: rgba(245, 176, 65, 0.2);
+      }
+
       /* Footer */
       footer {
         width: 100%;
@@ -519,6 +627,12 @@
             técnicas de neurodesign para transformar visitantes em dinheiro no
             seu bolso.
           </p>
+          <ul class="service-features">
+            <li>Design Exclusivo</li>
+            <li>Copywriting Persuasivo</li>
+            <li>Carregamento Ultra-Rápido</li>
+            <li>Pronto para Celulares</li>
+          </ul>
         </article>
 
         <article class="card pink">
@@ -528,6 +642,12 @@
             Lojas virtuais rápidas e seguras onde a experiência de compra é
             natural para o cliente. Foco máximo em vendas 24/7.
           </p>
+          <ul class="service-features">
+            <li>Carrinho Otimizado</li>
+            <li>Apresentação de Produtos Visual</li>
+            <li>SEO para Buscadores</li>
+            <li>Segurança SSL</li>
+          </ul>
         </article>
 
         <article class="card gold">
@@ -537,7 +657,137 @@
             Sistemas sob medida e painéis administrativos responsivos criados
             para automatizar sua dor de cabeça financeira e de gestão.
           </p>
+          <ul class="service-features">
+            <li>Arquitetura Escalável</li>
+            <li>Painel Intuitivo</li>
+            <li>Suporte e Treinamento</li>
+            <li>Backups Integrados</li>
+          </ul>
         </article>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+      <h2 class="section-title">
+        Nosso
+        <span class="highlight" style="animation-delay: -1s">Processo</span>
+      </h2>
+      <div class="grid-container">
+        <article class="card">
+          <div class="step-num">01</div>
+          <h3 style="color: var(--color-green)">Descoberta</h3>
+          <p>
+            MerguIhamos no seu negócio. Entendemos seu público-alvo, seus
+            objetivos de receita e desenhamos a estratégia arquitetural antes de
+            qualquer código.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="step-num">02</div>
+          <h3 style="color: var(--color-purple)">Design</h3>
+          <p>
+            Criamos interfaces exclusivas e protótipos de alta fidelidade.
+            Combinamos estética premium com técnicas de conversão e aprovação.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="step-num">03</div>
+          <h3 style="color: var(--color-gold)">Desenvolvimento</h3>
+          <p>
+            Construímos seu projeto com tecnologias de ponta, ignorando
+            templates prontos, focando em performance absurda e extrema
+            segurança.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="step-num">04</div>
+          <h3 style="color: var(--color-pink)">Entrega</h3>
+          <p>
+            Testes rigorosos e SEO on-page aplicados. Lançamos sua plataforma ao
+            mundo com treinamento em vídeo e suporte técnico inicial.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section>
+      <h2 class="section-title">
+        Experiência
+        <span class="highlight" style="animation-delay: -3s">Comprovada</span>
+      </h2>
+      <div class="grid-container">
+        <article class="card review-card">
+          <p>
+            "A agilidade da Lux Vesper foi muito acima do mercado. Não fizeram
+            apenas um site, criaram uma vitrine que aumentou nosso
+            reconhecimento global imediatamente."
+          </p>
+          <div class="client-name">Equipe CTZoe</div>
+          <div class="client-role">Plataforma Institucional Educacional</div>
+        </article>
+
+        <article class="card review-card">
+          <p>
+            "Um nível de profissionalismo e design que não encontrávamos antes.
+            Nossa autoridade subiu expressivamente após mudarmos o projeto para
+            as mãos da equipe."
+          </p>
+          <div class="client-name">Krawz</div>
+          <div class="client-role">E-commerce / Autoridade Online</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+      <h2 class="section-title">
+        Perguntas
+        <span class="highlight" style="animation-delay: -5s">Frequentes</span>
+      </h2>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary>Qual prazo de entrega para meu projeto?</summary>
+          <div class="faq-answer">
+            Depende diretamente da complexidade do que você precisa. Landing
+            pages comerciais levam em média de 10 a 14 dias, enquanto sistemas
+            web e e-commerces começam em 30 a 45 dias para garantia de
+            perfeição.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Terei suporte após o fim do desenvolvimento?</summary>
+          <div class="faq-answer">
+            Sim. Entregamos 30 dias de suporte ouro para eventuais ajustes
+            técnicos e fornecemos materiais ou consultoria para a sua própria
+            equipe operar o conteúdo diário (se aplicável, como em blogs e
+            lojas). Planos para sustentação de longo prazo estão disponíveis.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Vocês usam templates do WordPress?</summary>
+          <div class="faq-answer">
+            Não. Na Lux Vesper trabalhamos exclusivamente com desenvolvimento do
+            zero (customizado), garantindo um código limpo, ultrarrápido (score
+            verde em verificadores de carregamento) e livre das vulnerabilidades
+            comuns de construtores de arrastar-e-soltar baratos.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Quais as formas de pagamento?</summary>
+          <div class="faq-answer">
+            Operamos focado em B2B com segurança mutua: 40% a 50% de entrada no
+            fechamento de contrato (via Pix, Transferência ou Cartão), e o valor
+            restante é faturado no dia da aprovação e entrega final.
+          </div>
+        </details>
       </div>
     </section>
 
