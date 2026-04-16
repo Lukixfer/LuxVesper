@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lux Vesper - Desenvolvimento Web Premium</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #09090e;
+        --color-gold: #f5b041;
+        --color-purple: #8e44ad;
+        --color-green: #10b981;
+        --color-pink: #ec4899;
+        --text-light: #f8f9fa;
+        --text-muted: #a0a0b0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Outfit", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        min-height: 100vh;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Banner Container */
+      .lux-banner {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        min-height: 600px;
+        margin: 2rem auto;
+        border-radius: 24px;
+        background: linear-gradient(145deg, #12121c 0%, #09090e 100%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      /* Decorative Background Elements (Glowing Orbs) */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: 0;
+        opacity: 0.4;
+        animation: float 8s infinite alternate ease-in-out;
+      }
+
+      .orb-1 {
+        width: 400px;
+        height: 400px;
+        background: var(--color-purple);
+        top: -100px;
+        left: -100px;
+      }
+
+      .orb-2 {
+        width: 350px;
+        height: 350px;
+        background: var(--color-green);
+        bottom: -50px;
+        right: -50px;
+        animation-delay: -4s;
+      }
+
+      .orb-3 {
+        width: 250px;
+        height: 250px;
+        background: var(--color-pink);
+        top: 30%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        animation-delay: -2s;
+        opacity: 0.3;
+      }
+
+      /* Content Wrapper */
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Brand Label */
+      .brand-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(245, 176, 65, 0.3);
+        border-radius: 30px;
+        color: var(--color-gold);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .brand-label::before {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        background: var(--color-gold);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--color-gold);
+      }
+
+      /* Titles */
+      h1 {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -1px;
+      }
+
+      .highlight {
+        background: linear-gradient(
+          to right,
+          var(--color-green),
+          var(--color-gold),
+          var(--color-pink),
+          var(--color-purple)
+        );
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        animation: shine 6s linear infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          background-position: 0% center;
+        }
+        100% {
+          background-position: 300% center;
+        }
+      }
+
+      p.subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 3rem;
+        font-weight: 300;
+      }
+
+      /* Buttons */
+      .actions {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary {
+        background: var(--text-light);
+        color: var(--bg-dark);
+        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(16, 185, 129, 0.3); /* Green glow effect */
+        background: var(--color-green);
+        color: #fff;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text-light);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--color-pink);
+        color: var(--color-pink);
+        background: rgba(236, 72, 153, 0.05);
+        transform: translateY(-3px);
+      }
+
+      /* Keyframes */
+      @keyframes float {
+        0% {
+          transform: translateY(0px) scale(1);
+        }
+        100% {
+          transform: translateY(30px) scale(1.1);
+        }
+      }
+
+      /* Features List */
+      .features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 2rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-muted);
+        font-size: 1rem;
+      }
+
+      .feature-icon {
+        color: var(--color-gold);
+      }
+
+      /* -------------------------------------
+         Novas Seções: Portfólio, Serviços, etc
+      ---------------------------------------- */
+      section {
+        width: 100%;
+        max-width: 1200px;
+        padding: 5rem 2rem;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 3.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      /* Grid Portfólio & Serviços */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2.5rem;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 20px;
+        box-shadow: inset 0 0 0 1px transparent;
+        transition: all 0.4s ease;
+        pointer-events: none;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .card.gold:hover::before {
+        box-shadow: inset 0 0 0 1px var(--color-gold);
+      }
+      .card.purple:hover::before {
+        box-shadow: inset 0 0 0 1px var(--color-purple);
+      }
+      .card.green:hover::before {
+        box-shadow: inset 0 0 0 1px var(--color-green);
+      }
+      .card.pink:hover::before {
+        box-shadow: inset 0 0 0 1px var(--color-pink);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+      }
+
+      .card p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .card-link:hover {
+        color: var(--color-gold);
+      }
+
+      /* CTA WhatsApp Sec */
+      .cta-section {
+        background: linear-gradient(145deg, #12121c 0%, #09090e 100%);
+        border: 1px solid rgba(16, 185, 129, 0.2); /* Borda verde suave */
+        border-radius: 24px;
+        text-align: center;
+        padding: 4rem 2rem;
+        margin: 5rem auto;
+        position: relative;
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.05);
+      }
+
+      .cta-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        font-size: 1.2rem;
+      }
+
+      .btn-whatsapp {
+        background: var(--color-green);
+        color: #fff;
+        padding: 1.2rem 3rem;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        background: #0fa472;
+      }
+
+      /* Footer */
+      footer {
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      footer p {
+        margin-bottom: 0.5rem;
+      }
+
+      footer a {
+        color: var(--color-gold);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      footer a:hover {
+        color: var(--text-light);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="lux-banner">
+      <!-- Orbs Backgrounds -->
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+
+      <div class="content-wrapper">
+        <div class="brand-label">Lux Vesper WebDev</div>
+
+        <h1>
+          Eleve o padrão do seu negócio. <br /><span class="highlight"
+            >O Futuro é Digital.</span
+          >
+        </h1>
+
+        <p class="subtitle">
+          Desenvolvemos experiências web premium, rápidas e orientadas à
+          conversão. Deixamos sua marca brilhar no mundo digital com tecnologia
+          de ponta e design exclusivo.
+        </p>
+
+        <div class="actions">
+          <a href="#proposta" class="btn btn-primary">Solicitar Proposta</a>
+          <a href="#portfolio" class="btn btn-outline">Ver Nosso Portfólio</a>
+        </div>
+
+        <div class="features">
+          <div class="feature-item">
+            <span class="feature-icon">✦</span> Alta Performance
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✦</span> Design Exclusivo
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✦</span> Foco em Vendas
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+      <h2 class="section-title">
+        Obras de
+        <span class="highlight" style="animation-delay: -2s">Arte Digital</span>
+      </h2>
+      <div class="grid-container">
+        <!-- CTZoe -->
+        <article class="card purple">
+          <h3 style="color: var(--color-purple)">CTZoe</h3>
+          <p>
+            Plataforma moderna, intuitiva e veloz focada em apresentar a
+            experiência CTZoe com a melhor navegação para os usuários do mundo
+            todo.
+          </p>
+          <a
+            href="https://ctzoe.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-link"
+            style="color: var(--color-purple)"
+          >
+            Visitar ctzoe.org ➔
+          </a>
+        </article>
+
+        <!-- Krawz -->
+        <article class="card gold">
+          <h3 style="color: var(--color-gold)">Krawz</h3>
+          <p>
+            Projeto de excelência construído para conversão e autoridade,
+            combinando estética escura e vibrante para uma percepção de marca
+            inesquecível.
+          </p>
+          <a
+            href="https://krawz.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-link"
+            style="color: var(--color-gold)"
+          >
+            Visitar krawz.net ➔
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section>
+      <h2 class="section-title">
+        Nossas
+        <span class="highlight" style="animation-delay: -4s"
+          >Especialidades</span
+        >
+      </h2>
+      <div class="grid-container">
+        <article class="card green">
+          <div style="font-size: 2rem; margin-bottom: 1rem">🌐</div>
+          <h3>Landing Pages</h3>
+          <p>
+            Páginas de alta performance e extrema beleza configuradas com
+            técnicas de neurodesign para transformar visitantes em dinheiro no
+            seu bolso.
+          </p>
+        </article>
+
+        <article class="card pink">
+          <div style="font-size: 2rem; margin-bottom: 1rem">🛍️</div>
+          <h3>E-commerce</h3>
+          <p>
+            Lojas virtuais rápidas e seguras onde a experiência de compra é
+            natural para o cliente. Foco máximo em vendas 24/7.
+          </p>
+        </article>
+
+        <article class="card gold">
+          <div style="font-size: 2rem; margin-bottom: 1rem">⚙️</div>
+          <h3>Sistemas Web</h3>
+          <p>
+            Sistemas sob medida e painéis administrativos responsivos criados
+            para automatizar sua dor de cabeça financeira e de gestão.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <section id="proposta" style="padding-top: 0; padding-bottom: 0">
+      <div class="cta-section">
+        <h2>Pronto para iniciar projeto na Lux Vesper?</h2>
+        <p>Desenvolva seu próximo sucesso diretamente conosco agora mesmo.</p>
+        <a
+          href="https://wa.me/5531984069315"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+        >
+          <svg
+            style="width: 28px; height: 28px"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.052 0C5.495 0 .092 5.405.09 11.967a11.94 11.94 0 0 0 1.602 6.002L0 23.957l6.236-1.637a11.867 11.867 0 0 0 5.811 1.519h.005c6.557 0 11.895-5.405 11.898-11.968a11.802 11.802 0 0 0-3.486-8.414"
+            />
+          </svg>
+          Falar com Especialista
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Lux Vesper. Todos os direitos reservados.</p>
+      <p>
+        Desenvolvido no Brasil. <a href="#proposta">Converse pelo WhatsApp</a>.
+      </p>
+    </footer>
+  </body>
+</html>
